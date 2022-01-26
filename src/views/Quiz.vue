@@ -8,7 +8,7 @@
 <script>
 // @ is an alias to /src
 import HelloWorld from '@/components/HelloWorld.vue'
-import quiz from '../assets/questions.json'
+import dataset from '../assets/questions.json'
 
 export default {
   name: 'Home',
@@ -17,7 +17,7 @@ export default {
   },
   data(){
     return {
-      quiz: quiz
+      dataset: dataset
     }
   }
 }
