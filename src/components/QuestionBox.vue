@@ -9,7 +9,7 @@
                         {{answer}}
                     </li>
                 </ul> -->
-                <b-form-radio v-for="(answer, index) in questionInfo.answers" :key="answer[index]" v-model="selected" :aria-describedby="ariaDescribedby" name="some-radios" :value="answer">{{answer}}</b-form-radio>
+                <b-form-radio v-model="selected" v-for="(answer, index) in questionInfo.answers" :key="answer[index]" :aria-describedby="ariaDescribedby" :name="questionInfo.question" :value="answer">{{answer}}</b-form-radio>
 
                 <div class="mt-3">Selected: <strong>{{ selected }}</strong></div>
             </b-card-text>
