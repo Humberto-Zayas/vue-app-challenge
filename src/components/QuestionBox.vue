@@ -1,14 +1,20 @@
 <template>
     <div >
         <b-card class="mb-3" :title="questionInfo.number + '. ' + questionInfo.question">
-            <b-card-text>
             
+
+            <b-card-text>
+                <!-- <ul>
+                    <li v-for="(answer, index) in questionInfo.answers" :key="answer[index]">
+                        {{answer}}
+                    </li>
+                </ul> -->
+                <b-form-radio v-for="(answer, index) in questionInfo.answers" :key="answer[index]" v-model="selected" :aria-describedby="ariaDescribedby" name="some-radios" :value="answer">{{answer}}</b-form-radio>
+
+                <div class="mt-3">Selected: <strong>{{ selected }}</strong></div>
             </b-card-text>
 
-            <b-card-text>A second paragraph of text in the card.</b-card-text>
-
-            <a href="#" class="card-link">Card link</a>
-            <b-link href="#" class="card-link">Another link</b-link>
+            
         </b-card>
         
     </div>
@@ -21,6 +27,11 @@ export default {
   props: {
       dataset: Object,
       questionInfo: Object
+  },
+  data(){
+      return {
+          selected: ''
+      }
   }
 
 }
