@@ -13,18 +13,18 @@
                     v-model="selected" 
                     v-for="(answer, index) in questionInfo.answers" 
                     :key="answer[index]" 
-                    :class="{correct: answer[index] == questionInfo.correct_answer}"
+                    :class="{correct: index == questionInfo.correct_answer}"
                     @change="answeredQuestion(answer[index])"
                     :name="questionInfo.question" 
-                    :value="answer">
+                    :value="index">
                         {{answer}}
                 </b-form-radio>
 
                 <div class="mt-3">Selected: <strong>{{ selected }}</strong></div>
                 <div class="mt-3">Answered: <strong>{{ answered }}</strong></div>
-                <div>
-                    <b-badge style="background-color: green; color: white" variant="success">Correct</b-badge>
-                    <b-badge style="background-color: red; color: white" variant="danger">Wrong</b-badge>
+                <div v-show="answered">
+                    <b-badge v-if="selected == this.questionInfo.correct_answer" style="background-color: green; color: white" variant="success">Correct</b-badge>
+                    <b-badge v-else style="background-color: red; color: white" variant="danger">Wrong</b-badge>
                 </div>
             </b-card-text>
 
@@ -50,7 +50,7 @@ export default {
       }
   },
   methods: {
-      questionAnswered() {
+      answeredQuestion() {
           this.$emit('answered')
           return this.answered = true
       }
