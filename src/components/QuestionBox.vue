@@ -22,6 +22,10 @@
 
                 <div class="mt-3">Selected: <strong>{{ selected }}</strong></div>
                 <div class="mt-3">Answered: <strong>{{ answered }}</strong></div>
+                <div>
+                    <b-badge style="background-color: green; color: white" variant="success">Correct</b-badge>
+                    <b-badge style="background-color: red; color: white" variant="danger">Wrong</b-badge>
+                </div>
             </b-card-text>
 
             
