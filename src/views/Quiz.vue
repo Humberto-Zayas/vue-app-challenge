@@ -2,7 +2,9 @@
   <div class="home">
     
     <HelloWorld msg="Vue Quiz App Challenge"/>
-    <quiz-score/>
+    <quiz-score 
+      :dataset="dataset"
+    />
     <question-box 
       @answered="event"
       :class="{answered : answered}"

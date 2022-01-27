@@ -15,6 +15,7 @@
                     :key="answer[index]" 
                     :class="{correct: index == questionInfo.correct_answer}"
                     @change="answeredQuestion(index)"
+                    
                     :name="questionInfo.question" 
                     :value="index">
                         {{answer}}
@@ -37,6 +38,9 @@
 </template>
 
 <script>
+
+import {eventBus} from "../main";
+
 export default {
   name: 'QuestionBox',
   props: {
@@ -53,14 +57,19 @@ export default {
   },
   methods: {
       answeredQuestion(index) {
-          this.$emit('answered')
           this.answered = true
           if (index == this.questionInfo.correct_answer) {
               this.correct = true
+              this.messageQuizScore()
           } else {
               this.correct = false
+              this.messageQuizScore()
           }
-      }
+      },
+      messageQuizScore() {
+        
+        eventBus.$emit('questionAnswered', this.correct)
+    }
   }
 
 }
