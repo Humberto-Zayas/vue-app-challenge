@@ -8,7 +8,7 @@
           "0.018",
           "0.18"
         ],
-        "correct_answer": 1
+        "correct_answer": 0
       },
       {
         "number": 2,
@@ -19,7 +19,7 @@
           "14",
           "15"
         ],
-        "correct_answer": 4
+        "correct_answer": 3
       }
     ]
   }

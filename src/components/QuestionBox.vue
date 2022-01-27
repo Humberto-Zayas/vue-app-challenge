@@ -10,11 +10,14 @@
                     </li>
                 </ul> -->
                 <b-form-radio 
-                    v-model="selected" v-for="(answer, index) in questionInfo.answers" 
+                    v-model="selected" 
+                    v-for="(answer, index) in questionInfo.answers" 
                     :key="answer[index]" 
-                    @change="answeredQuestion()"
+                    :class="{correct: answer[index] == questionInfo.correct_answer}"
+                    @change="answeredQuestion(answer[index])"
                     :name="questionInfo.question" 
-                    :value="answer">{{answer}}
+                    :value="answer">
+                        {{answer}}
                 </b-form-radio>
 
                 <div class="mt-3">Selected: <strong>{{ selected }}</strong></div>
@@ -38,7 +41,8 @@ export default {
   data(){
       return {
           selected: '',
-          answered: false
+          answered: false,
+          test: ''
       }
   },
   methods: {
@@ -50,3 +54,9 @@ export default {
 
 }
 </script>
+
+<style lang="scss" scoped>
+    .correct {
+        background: green
+    }
+</style>
