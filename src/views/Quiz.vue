@@ -3,7 +3,7 @@
     
     <HelloWorld msg="Vue Quiz App Challenge"/>
     <quiz-score/>
-    <question-box />
+    <question-box v-for="question in dataset.questions" :key="question.question" />
     
   </div>
 </template>
