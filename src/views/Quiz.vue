@@ -4,6 +4,7 @@
     <HelloWorld msg="Vue Quiz App Challenge"/>
     <quiz-score/>
     <question-box />
+    
   </div>
 </template>
 
