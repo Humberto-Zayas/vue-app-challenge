@@ -15,6 +15,8 @@ Vue.use(BootstrapVue)
 // Optionally install the BootstrapVue icon components plugin
 Vue.use(IconsPlugin)
 
+export const eventBus = new Vue()
+
 new Vue({
   router,
   store,
