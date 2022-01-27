@@ -1,6 +1,6 @@
 <template>
     <div>
-        <b-card :class="{correctCard: selected == this.questionInfo.correct_answer}" class="mb-3" :title="questionInfo.number + '. ' + questionInfo.question">
+        <b-card :class="correct ? 'correctCard' : 'incorrectCard'" class="mb-3" :title="questionInfo.number + '. ' + questionInfo.question">
             
 
             <b-card-text>
@@ -72,5 +72,8 @@ export default {
     }
     .correctCard {
         border-color: green !important;
+    }
+    .incorrectCard {
+        border-color: red;
     }
 </style>
