@@ -4,12 +4,15 @@
     <HelloWorld msg="Vue Quiz App Challenge"/>
     <quiz-score/>
     <question-box 
-       
+      @answered="event"
+      :class="{answered : answered}"
       v-for="(question, index) in dataset.questions" 
       :key="question[index]" 
       :dataset="dataset"
       :questionInfo="question"
     />
+
+    <b-button>Submit</b-button>
     
   </div>
 </template>
@@ -30,8 +33,14 @@ export default {
   },
   data(){
     return {
-      dataset: dataset
+      dataset: dataset,
+      answered: true
     }
-  }
+  },
+  methods: {
+      event() {
+        return
+      }
+    }
 }
 </script>

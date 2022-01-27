@@ -9,9 +9,16 @@
                         {{answer}}
                     </li>
                 </ul> -->
-                <b-form-radio v-model="selected" v-for="(answer, index) in questionInfo.answers" :key="answer[index]" :aria-describedby="ariaDescribedby" :name="questionInfo.question" :value="answer">{{answer}}</b-form-radio>
+                <b-form-radio 
+                    v-model="selected" v-for="(answer, index) in questionInfo.answers" 
+                    :key="answer[index]" 
+                    @change="answeredQuestion()"
+                    :name="questionInfo.question" 
+                    :value="answer">{{answer}}
+                </b-form-radio>
 
                 <div class="mt-3">Selected: <strong>{{ selected }}</strong></div>
+                <div class="mt-3">Answered: <strong>{{ answered }}</strong></div>
             </b-card-text>
 
             
@@ -30,7 +37,14 @@ export default {
   },
   data(){
       return {
-          selected: ''
+          selected: '',
+          answered: false
+      }
+  },
+  methods: {
+      questionAnswered() {
+          this.$emit('answered')
+          return this.answered = true
       }
   }
 
