@@ -1,6 +1,6 @@
 <template>
-    <div >
-        <b-card class="mb-3" :title="questionInfo.number + '. ' + questionInfo.question">
+    <div>
+        <b-card :class="{correctCard: selected == this.questionInfo.correct_answer}" class="mb-3" :title="questionInfo.number + '. ' + questionInfo.question">
             
 
             <b-card-text>
@@ -14,7 +14,7 @@
                     v-for="(answer, index) in questionInfo.answers" 
                     :key="answer[index]" 
                     :class="{correct: index == questionInfo.correct_answer}"
-                    @change="answeredQuestion(answer[index])"
+                    @change="answeredQuestion(index)"
                     :name="questionInfo.question" 
                     :value="index">
                         {{answer}}
@@ -22,6 +22,7 @@
 
                 <div class="mt-3">Selected: <strong>{{ selected }}</strong></div>
                 <div class="mt-3">Answered: <strong>{{ answered }}</strong></div>
+                <div class="mt-3">Correct: <strong>{{ correct }}</strong></div>
                 <div v-show="answered">
                     <b-badge v-if="selected == this.questionInfo.correct_answer" style="background-color: green; color: white" variant="success">Correct</b-badge>
                     <b-badge v-else style="background-color: red; color: white" variant="danger">Wrong</b-badge>
@@ -46,13 +47,19 @@ export default {
       return {
           selected: '',
           answered: false,
-          test: ''
+          test: '',
+          correct: ''
       }
   },
   methods: {
-      answeredQuestion() {
+      answeredQuestion(index) {
           this.$emit('answered')
-          return this.answered = true
+          this.answered = true
+          if (index == this.questionInfo.correct_answer) {
+              this.correct = true
+          } else {
+              this.correct = false
+          }
       }
   }
 
@@ -62,5 +69,8 @@ export default {
 <style lang="scss" scoped>
     .correct {
         background: green
+    }
+    .correctCard {
+        border-color: green !important;
     }
 </style>
